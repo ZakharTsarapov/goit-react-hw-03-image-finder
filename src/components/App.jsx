@@ -1,24 +1,27 @@
 import React, { Component } from 'react';
-// import { nanoid } from 'nanoid';
-// import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import Modal from './Modal/Modal';
+import { ImageGallery } from './ImageGallery/ImageGallery';
+import css from './App.module.css'
+import { Searchbar } from './Searchbar/Searchbar';
 
-export class App extends Component {
-  state = {
-    showModal: false,
-  };
-  toggleModal = () => {
-    this.setState(({ showModal }) => ({ showModal: !showModal }));
-  };
 
-  render() {
+ export class App extends Component {
+   state = {
+     searchQuery: '',
+   };
 
-    const { showModal } = this.state
-    return (
-      <div>
-        <button type='button' onClick={this.toggleModal}>открыть модалку</button>
-        {showModal && <Modal onClose={this.toggleModal}></Modal>}
-      </div>
-    )
-  }
-}
+   handleFormSubmit = searchQuery => {
+     this.setState({ searchQuery });
+   };
+
+   render() {
+     const { searchQuery } = this.state;
+     return (
+       <div className={css.app}>
+         <Searchbar onSubmit={this.handleFormSubmit} />
+         <ImageGallery searchQuery={searchQuery} />
+       </div>
+     );
+   }
+ }
+
+
