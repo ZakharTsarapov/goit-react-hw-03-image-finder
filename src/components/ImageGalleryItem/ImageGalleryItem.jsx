@@ -1,32 +1,27 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import css from './ImageGalleryItem.module.css'
 
-export class ImageGalleryItem extends Component {
-    onClick = () => {
-        const { img } = this.props;
-    this.props.onGetModalImg(img.largeImageURL, img.tags);
-    this.props.toggleModal();
-  };
-
-    render() {
-      const { img } = this.props;
+export default function ImageGalleryItem({
+    webformatURL,
+    largeImageURL,
+    tags,
+    onClick,
+}) {
     return (
       <li className={css.imageGalleryItem}>
         <img
           className={css.imageGalleryItem__image}
-          onClick={this.onClick}
-          src={img.webformatURL}
-          alt={img.tags}
+          src={webformatURL}
+          alt={tags}
+          onClick={() => onClick(largeImageURL)}
         />
       </li>
     );
-  }
 }
 
 ImageGalleryItem.propTypes = {
-  img: PropTypes.object.isRequired,
-  toggleModal: PropTypes.func.isRequired,
-  onGetModalImg: PropTypes.func.isRequired,
+  webformatURL: PropTypes.string.isRequired,
+  largeImageURL: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
-

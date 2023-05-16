@@ -19,7 +19,7 @@ export class Searchbar extends Component {
     event.preventDefault();
 
     if (this.state.searchQuery.trim() === '') {
-      Notify.failure('Некорректное значение поиска');
+      Notify.failure('Введите имя покемона');
       return;
     }
 

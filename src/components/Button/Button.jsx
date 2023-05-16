@@ -1,14 +1,12 @@
 import PropTypes from 'prop-types';
 import css from './Button.module.css'
 
-export const Button = ({ children, onClick }) => (
-  <button type="button" className={css.button} onClick={onClick}>
-    {children}
+export const Button = ({ onClick }) => (
+  <button type="button" className={css.buttonBtn} onClick={onClick}>Load More
   </button>
 );
 
 Button.propTypes = {
-  Children: PropTypes.node,
   onClick: PropTypes.func.isRequired,
 };
 

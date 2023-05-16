@@ -22,3 +22,4 @@ export const fetchImages = async (searchQuery, page) => {
     throw new Error(error.message);
   }
 };
+
